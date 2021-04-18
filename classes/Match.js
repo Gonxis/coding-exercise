@@ -1,5 +1,5 @@
 module.exports = class Match {
-    constructor(homeTeam, awayTeam, homeScore = 0, awayScore = 0, inProgress = true) {
+    constructor(homeTeam, awayTeam, homeScore = 0, awayScore = 0, inProgress = false) {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.homeScore = homeScore;
@@ -18,13 +18,12 @@ module.exports = class Match {
     }
 
     startMatch() {
+        this.inProgress = true;
         return this.getMatchInfo();
     }
 
     finishMatch() {
-        return {
-            ...this.getMatchInfo(),
-            inProgress: false
-        }
+        this.inProgress = false;
+        return this.getMatchInfo();
     }
 }
