@@ -1,5 +1,9 @@
+const Score = require('./Score');
+const scoreTeamA = new Score(true);
+const scoreTeamB = new Score(false);
+
 module.exports = class Match {
-    constructor(homeTeam, awayTeam, homeScore = 0, awayScore = 0, inProgress = false) {
+    constructor(homeTeam, awayTeam, homeScore = scoreTeamA.score, awayScore = scoreTeamB.score, inProgress = false) {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.homeScore = homeScore;
@@ -17,6 +21,13 @@ module.exports = class Match {
         }
     }
 
+    getMatchScore() {
+        return {
+            homeScore: this.homeScore.score,
+            awayScore: this.awayScore.score,
+        }
+    }
+
     startMatch() {
         this.inProgress = true;
         return this.getMatchInfo();
@@ -28,8 +39,10 @@ module.exports = class Match {
     }
 
     updateMatch(homeScore, awayScore) {
-        this.homeScore = homeScore;
-        this.awayScore = awayScore;
+        let local = new Score(true, homeScore);
+        let away = new Score(false, awayScore);
+        this.homeScore = local.score;
+        this.awayScore = away.score;
         return this.getMatchInfo();
     }
 }
