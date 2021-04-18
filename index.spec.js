@@ -17,7 +17,7 @@ describe('Class Match tests', () => {
 
     it("Finish the game", () => {
         const match = new Match("Germany", "Russia");
-        const received = match.endMatch();
+        const received = match.finishMatch();
         const expected = {
             "homeTeam": 'Germany',
             "awayTeam": 'Russia',

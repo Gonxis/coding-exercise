@@ -16,4 +16,14 @@ module.exports = class Match {
             inProgress: true
         }
     }
+
+    finishMatch() {
+        return {
+            homeTeam: this.homeTeam,
+            awayTeam: this.awayTeam,
+            homeScore: 0,
+            awayScore: 0,
+            inProgress: false
+        }
+    }
 }
