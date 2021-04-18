@@ -14,4 +14,18 @@ describe('Class Match tests', () => {
 
         expect(received).toEqual(expected);
     })
+
+    it("Finish the game", () => {
+        const match = new Match("Germany", "Russia");
+        const received = match.endMatch();
+        const expected = {
+            "homeTeam": 'Germany',
+            "awayTeam": 'Russia',
+            "homeScore": 0,
+            "awayScore": 0,
+            "inProgress": false
+        }
+
+        expect(received).toEqual(expected);
+    })
 })
