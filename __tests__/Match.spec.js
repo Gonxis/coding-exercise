@@ -1,6 +1,9 @@
 import Match from '../classes/Match';
 import Score from '../classes/Score';
 
+const homeScore = new Score(true);
+const awayScore = new Score(false);
+
 describe('Class Match tests', () => {
     it("Let the game start!", () => {
         let match = new Match("Argentina", "Spain");
@@ -8,8 +11,8 @@ describe('Class Match tests', () => {
         let expected = { 
             "homeTeam": 'Argentina',
             "awayTeam": 'Spain',
-            "homeScore": 0,
-            "awayScore": 0,
+            "homeScore": homeScore.score,
+            "awayScore": awayScore.score,
             "inProgress": true
         }
 
@@ -22,8 +25,8 @@ describe('Class Match tests', () => {
         const expected = {
             "homeTeam": 'Germany',
             "awayTeam": 'Russia',
-            "homeScore": 0,
-            "awayScore": 0,
+            "homeScore": homeScore.score,
+            "awayScore": awayScore.score,
             "inProgress": false
         }
 
@@ -32,13 +35,14 @@ describe('Class Match tests', () => {
 
     it("Update the game score", () => {
         const match = new Match("Italy", "Japan");
-        match.startMatch(0, 7);
-        const received = match.updateMatch(0, 7);
+        match.startMatch();
+        const japanScore = new Score(false, 7);
+        const received = match.updateMatch(homeScore.score, japanScore.score);
         const expected = {
             "homeTeam": 'Italy',
             "awayTeam": "Japan",
-            "homeScore": 0,
-            "awayScore": 7,
+            "homeScore": homeScore.score,
+            "awayScore": japanScore.score,
             "inProgress": true
         };
 
