@@ -26,4 +26,10 @@ module.exports = class Match {
         this.inProgress = false;
         return this.getMatchInfo();
     }
+
+    updateMatch(homeScore, awayScore) {
+        this.homeScore = homeScore;
+        this.awayScore = awayScore;
+        return this.getMatchInfo();
+    }
 }
