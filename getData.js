@@ -34,7 +34,7 @@ const getData = async (filename = file) =>  {
         }
         return matches;
     } catch(e) {
-        console.error(e);
+        return new Error("The file was not found");
     }
 };
 
