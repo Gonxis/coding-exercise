@@ -1,4 +1,4 @@
-const getData = require('./getData');
+const getData = require('../getData');
 
 describe('Fetching the data', () => {
     it('Obtain the data from the default TXT file', done => {

@@ -1,4 +1,5 @@
-import Match from './classes/Match';
+import Match from '../classes/Match';
+import Score from '../classes/Score';
 
 describe('Class Match tests', () => {
     it("Let the game start!", () => {
