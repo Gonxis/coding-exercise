@@ -56,4 +56,44 @@ To execute the tests we will have to do it with the command below:
     npm test
 
 
+## Application requirements
+
+### Feature 1 - Start match
+
+```
+As a user
+I want to start a new game
+And set a home and an away team
+So that I could be able to see it on the board
+```
+
+### Feature 2 - Finish match
+
+```
+As a user
+I want to finish a match
+So that I no longer see it on the board
+```
+
+### Feature 3 - Update the score
+
+```
+As a user
+I want to update the score of a match
+So that the match score is always up to date
+```
+
+### Feature 4 - Get summary of games by total score.
+
+```
+As a user
+I want to get a summary of games by total score.
+So that I can see all the games and their results in an specific order.
+```
+
+
 ## Other considerations
+
+I have been working alone on the Main branch as I am the only one working in this project, but maybe if I had been working with other people, I had followed gitflow or I had worked with branch per feature.
+
+I have made the assumption that the games were sorted first of all summing the total of each scores (homeScore and AwayScore) by the greatest the first ones, and if they are with the same total score, sorted by the most recently added to the system first. So in the example given, the order is: d, b, a, e and c
