@@ -23,8 +23,8 @@ module.exports = class Match {
 
     getMatchScore() {
         return {
-            homeScore: this.homeScore.score,
-            awayScore: this.awayScore.score,
+            homeScore: this.homeScore,
+            awayScore: this.awayScore,
         }
     }
 
@@ -34,11 +34,15 @@ module.exports = class Match {
     }
 
     finishMatch() {
+        if (!this.inProgress)
+            return new Error("The match is not in progress");
         this.inProgress = false;
         return this.getMatchInfo();
     }
 
     updateMatch(homeScore, awayScore) {
+        if (!this.inProgress)
+            return new Error("The match has not started yet or has already finished");
         let local = new Score(true, homeScore);
         let away = new Score(false, awayScore);
         this.homeScore = local.score;
