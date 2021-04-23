@@ -21,6 +21,7 @@ describe('Class Match tests', () => {
 
     it("Finish the game", () => {
         const match = new Match("Germany", "Russia");
+        match.startMatch();
         const received = match.finishMatch();
         const expected = {
             "homeTeam": 'Germany',
@@ -45,6 +46,15 @@ describe('Class Match tests', () => {
             "awayScore": japanScore.score,
             "inProgress": true
         };
+
+        expect(received).toEqual(expected);
+    })
+
+    it("Don't allow to finis a match when it has not begin", () => {
+        const match = new Match("Japan", "Spain");
+
+        const received = match.finishMatch();
+        const expected = new Error("The match is not in progress");
 
         expect(received).toEqual(expected);
     })
