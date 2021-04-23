@@ -53,8 +53,9 @@ describe('Class Match tests', () => {
     it("Don't allow to finish a match when it has not begun", () => {
         const match = new Match("Japan", "Spain");
 
-        const received = match.finishMatch();
-        const expected = new Error("The match is not in progress");
+        const error = match.finishMatch();
+        const received = error.message;
+        const expected = "The match is not in progress";
 
         expect(received).toEqual(expected);
     })
@@ -63,16 +64,18 @@ describe('Class Match tests', () => {
         const match = new Match("Brazil", "Mexico");
         match.startMatch();
         match.finishMatch()
-        const received = match.updateMatch();
-        const expected = new Error("The match has not started yet or has already finished");
+        const error = match.updateMatch();
+        const received = error.message;
+        const expected = "The match has not started yet or has already finished";
 
         expect(received).toEqual(expected);
     })
 
     it("Don't allow to update a not started match", () => {
         const match = new Match("Brazil", "Mexico");
-        const received = match.updateMatch();
-        const expected = new Error("The match has not started yet or has already finished");
+        const error = match.updateMatch();
+        const received = error.message;
+        const expected = "The match has not started yet or has already finished";
 
         expect(received).toEqual(expected);
     })

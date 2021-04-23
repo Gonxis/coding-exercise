@@ -1,4 +1,5 @@
 const Score = require('./Score');
+const Error = require('./Error');
 const scoreTeamA = new Score(true);
 const scoreTeamB = new Score(false);
 
