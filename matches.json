@@ -5,15 +5,15 @@
         "homeScore": 0,
         "awayScore": 0,
         "inProgress": false,
-        "id": 6
+        "id": 1
     },
     {
-        "homeTeam": "C",
-        "awayTeam": "D",
+        "homeTeam": "A",
+        "awayTeam": "B",
         "homeScore": 0,
         "awayScore": 0,
         "inProgress": false,
-        "id": 6
+        "id": 2
     },
     {
         "homeTeam": "E",
@@ -21,6 +21,6 @@
         "homeScore": 0,
         "awayScore": 0,
         "inProgress": false,
-        "id": 6
+        "id": 3
     }
 ]
