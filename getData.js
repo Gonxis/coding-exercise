@@ -57,11 +57,6 @@ const writeInJSONFile = (json, filename = jsonFile) => {
         result.push(json);
 
         fs.writeFile(filename, JSON.stringify(result, null, 4))
-        /* let obj =require(jsonFile);
-        let data = JSON.parse(obj);
-        data.push(json);
-        const toWrite = JSON.stringify(json, null, 4)
-        fs.writeFile(filename, toWrite) */
     } catch(e) {
         console.log(e)
         return new Error("Error while writing into the file");
