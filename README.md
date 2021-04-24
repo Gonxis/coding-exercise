@@ -10,7 +10,7 @@ Assuming we have NodeJS installed, I will proceed with the setup of my applicati
 I installed some tools in the project, so we can run the different tests of it:
 
     Jest: a test runner based on Jasmine
-    Babel: to transpile ECMAScript 2021 code to ECMAScript 5 (or at least ECMAScript 2016)
+    Babel: to transpile ECMAScript 2016 code to ECMAScript 5
 
 It can be installed running this command within the project root directory:
 
@@ -21,31 +21,25 @@ It can be installed running this command within the project root directory:
 
 ## Text file
 
-The inputs that will read the program are introduced via a text file in the root directory of the application with name:
+The inputs that will read the program are introduced via a josn file in the root directory of the application with name:
 
-    data.txt
+    matches.json
 
-The program will read the file line-by-line, each line contains information about a match as described below:
-
-    nameOfHomeTeam - nameOfAwayTeam: scoreOfHome - scoreOfAway
-
+The program will save the matches in that json. A match is saved when it begins, is updated or finished.
 
 ## Running the application
 
-In order to execute the application, we have to run the next command line:
+You can run it on REPL like this:
 
-    node index.js
-    or 
-    node build/bundle
-
-This will execute the application with the data.txt file as default. If we wanted to execute the application with an external file, the command line we have tu run is the next one:
-
-    node index.js /Path/to/file/AnotherFileName.txt
-    or
-    node build/bundle /Path/to/file/AnotherFileName.txt
-
-Where AnotherFileName.txt is the file we wanted to run, and /Path/to/file the path where the file is saved.
-
+    node
+    Board = require('./classes/Board')
+    Match = require('./classes/Match')
+    board = new Board()
+    match = new Match("Team A", "Team B")
+    match.startMatch()
+    match.updateMatch(0, 1)
+    match.finishMatch()
+    board.getSummaryGamesByTotalScore()
 
 ## Tests
 
@@ -98,6 +92,4 @@ I have been working alone on the Main branch as I am the only one working in thi
 
 I have made the assumption that the games were sorted first of all summing the total of each scores (homeScore and AwayScore) by the greatest the first ones, and if they are with the same total score, sorted by the most recently added to the system first. So in the example given, the order is: d, b, a, e and c
 
-I consider a Match that was played as one started and ended, so if a match was created but was not started and ended even if the result was 0 - 0 and don't need to be updated, the match is not saved in the file. You need to call finishMatch from Match class in order to save it.
-
-If the file you are passing is not created, will be created with the result of the match. If the exist, it will be appended, so is better if the file have a blank line at the final line.
+I consider a Match that was played as one started, so if a match was created but was not started even if the result was 0 - 0 and don't need to be updated, the match is not saved in the file. You need to call startMatch from Match class in order to save it.

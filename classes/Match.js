@@ -24,6 +24,7 @@ module.exports = class Match {
 
     getMatchInfo() {
         return {
+            id: this.id,
             homeTeam: this.homeTeam,
             awayTeam: this.awayTeam,
             homeScore: this.homeScore,
