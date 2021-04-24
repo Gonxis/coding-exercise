@@ -7,4 +7,11 @@ module.exports = class Board {
     constructor() {
         this.matchList = allMatchesInAnObj;
     }
+
+    getSummaryGamesByTotalScore() {
+        return this.matchList.matches.
+            sort((a, b) => (b.homeScore + b.awayScore) - (a.homeScore + a.awayScore) < 0 ? -1 
+            : (b.homeScore + b.awayScore) - (a.homeScore + a.awayScore) > 0 ? 1 
+            : (b.id) - (a.id) )
+    }
 }
