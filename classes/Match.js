@@ -15,6 +15,13 @@ module.exports = class Match {
         this.id = matchList.length + 1;
     }
 
+    saveIntoFile() {
+        getData.writeInJSONFile({
+            ...this.getMatchInfo(),
+            id: this.id
+        })
+    }
+
     getMatchInfo() {
         return {
             homeTeam: this.homeTeam,
@@ -34,6 +41,7 @@ module.exports = class Match {
 
     startMatch() {
         this.inProgress = true;
+        this.saveIntoFile();
         return this.getMatchInfo();
     }
 
@@ -41,10 +49,7 @@ module.exports = class Match {
         if (!this.inProgress)
             return new Error("The match is not in progress");
         this.inProgress = false;
-        getData.writeInJSONFile({
-            ...this.getMatchInfo(),
-            id: this.id
-        })
+        this.saveIntoFile();
         return this.getMatchInfo();
     }
 
@@ -55,6 +60,7 @@ module.exports = class Match {
         let away = new Score(false, awayScore);
         this.homeScore = local.score;
         this.awayScore = away.score;
+        this.saveIntoFile();
         return this.getMatchInfo();
     }
 }

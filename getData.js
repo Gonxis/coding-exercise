@@ -52,11 +52,12 @@ const writeInFile = (json, filename = file) => {
 
 const writeInJSONFile = (json, filename = jsonFile) => {
     try {
-        var data = fsWithoutPromises.readFileSync(filename);
-        var result = JSON.parse(data);
-        result.push(json);
+        let data = fsWithoutPromises.readFileSync(filename);
+        let result = JSON.parse(data);
+        let obj = result.filter(match => match.id !== json.id);
+        obj.push(json);
 
-        fs.writeFile(filename, JSON.stringify(result, null, 4))
+        fs.writeFile(filename, JSON.stringify(obj, null, 4))
     } catch(e) {
         console.log(e)
         return new Error("Error while writing into the file");
