@@ -36,8 +36,18 @@ const getData = async (filename = file) =>  {
     } catch(e) {
         return new Error("The file was not found");
     }
-};
+}
+
+const writeInFile = (json, filename = file) => {
+    try {
+        const line = `${json.homeTeam} - ${json.awayTeam}: ${json.homeScore} - ${json.awayScore}\n`
+        fs.appendFile(filename, line)
+    } catch(e) {
+        return new Error("Error while writing into the file");
+    }
+}
 
 module.exports = {
-    getData
+    getData,
+    writeInFile,
 }

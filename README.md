@@ -97,3 +97,7 @@ So that I can see all the games and their results in an specific order.
 I have been working alone on the Main branch as I am the only one working in this project, but maybe if I had been working with other people, I had followed gitflow or I had worked with branch per feature.
 
 I have made the assumption that the games were sorted first of all summing the total of each scores (homeScore and AwayScore) by the greatest the first ones, and if they are with the same total score, sorted by the most recently added to the system first. So in the example given, the order is: d, b, a, e and c
+
+I consider a Match that was played as one started and ended, so if a match was created but was not started and ended even if the result was 0 - 0 and don't need to be updated, the match is not saved in the file. You need to call finishMatch from Match class in order to save it.
+
+If the file you are passing is not created, will be created with the result of the match. If the exist, it will be appended, so is better if the file have a blank line at the final line.

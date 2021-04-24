@@ -2,6 +2,7 @@ const Score = require('./Score');
 const Error = require('./Error');
 const scoreTeamA = new Score(true);
 const scoreTeamB = new Score(false);
+const getData = require('../getData');
 
 module.exports = class Match {
     constructor(homeTeam, awayTeam, homeScore = scoreTeamA.score, awayScore = scoreTeamB.score, inProgress = false) {
@@ -38,6 +39,7 @@ module.exports = class Match {
         if (!this.inProgress)
             return new Error("The match is not in progress");
         this.inProgress = false;
+        getData.writeInFile({...this.getMatchInfo()})
         return this.getMatchInfo();
     }
 
