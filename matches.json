@@ -1,0 +1,26 @@
+[
+    {
+        "homeTeam": "C",
+        "awayTeam": "D",
+        "homeScore": 0,
+        "awayScore": 0,
+        "inProgress": false,
+        "id": 6
+    },
+    {
+        "homeTeam": "C",
+        "awayTeam": "D",
+        "homeScore": 0,
+        "awayScore": 0,
+        "inProgress": false,
+        "id": 6
+    },
+    {
+        "homeTeam": "E",
+        "awayTeam": "F",
+        "homeScore": 0,
+        "awayScore": 0,
+        "inProgress": false,
+        "id": 6
+    }
+]

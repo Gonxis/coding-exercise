@@ -1,6 +1,8 @@
 const file = './data.txt';
+const jsonFile = './matches.json';
 
 const fs = require('fs').promises;
+const fsWithoutPromises = require('fs');
 
 const formatData = (regex, list) => {
     return list
@@ -48,7 +50,26 @@ const writeInFile = (json, filename = file) => {
     }
 }
 
+const writeInJSONFile = (json, filename = jsonFile) => {
+    try {
+        var data = fsWithoutPromises.readFileSync(filename);
+        var result = JSON.parse(data);
+        result.push(json);
+
+        fs.writeFile(filename, JSON.stringify(result, null, 4))
+        /* let obj =require(jsonFile);
+        let data = JSON.parse(obj);
+        data.push(json);
+        const toWrite = JSON.stringify(json, null, 4)
+        fs.writeFile(filename, toWrite) */
+    } catch(e) {
+        console.log(e)
+        return new Error("Error while writing into the file");
+    }
+}
+
 module.exports = {
     getData,
     writeInFile,
+    writeInJSONFile
 }
