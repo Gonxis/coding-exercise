@@ -26,15 +26,16 @@ const convertData = (data, id) => {
 
 const getData = async (filename = file) =>  {
     try {
-        const resultString = await fs.readFile(filename, 'utf8');
+        const resultString = await fs.readFile(filename, 'utf-8');
         const resultList = resultString.split('\n');
         let matches = [];
-        for (let i = 0; i < resultList.length; i++) {
+        for (let i = 0; i < resultList.length - 1; i++) {
             matches.push(convertData(resultList[i], i + 1));
         }
         return matches;
     } catch(e) {
-        return new Error("The file was not found");
+        console.log(e)
+        return new Error(`An error occured during getting the data from ${filename}: ${e}`);
     }
 }
 
