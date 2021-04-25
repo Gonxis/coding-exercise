@@ -2,7 +2,7 @@ const Score = require('./Score');
 const Error = require('./Error');
 const scoreTeamA = new Score(true);
 const scoreTeamB = new Score(false);
-const getData = require('../getData');
+const { writeInJSONFileSync } = require('../getData');
 const matchList = require('../matches.json');
 
 module.exports = class Match {
@@ -16,7 +16,7 @@ module.exports = class Match {
     }
 
     saveIntoFile() {
-        getData.writeInJSONFile({
+        writeInJSONFileSync({
             ...this.getMatchInfo(),
             id: this.id
         })

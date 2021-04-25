@@ -93,3 +93,14 @@ I have been working alone on the Main branch as I am the only one working in thi
 I have made the assumption that the games were sorted first of all summing the total of each scores (homeScore and AwayScore) by the greatest the first ones, and if they are with the same total score, sorted by the most recently added to the system first. So in the example given, the order is: d, b, a, e and c
 
 I consider a Match that was played as one started, so if a match was created but was not started even if the result was 0 - 0 and don't need to be updated, the match is not saved in the file. You need to call startMatch from Match class in order to save it.
+
+I considered persisting the data was important, that is the reason why I dedicated time to save the data in a file.
+
+I will no longer continue with the exercise, I think I dedicated time enough to finish it and I haven't done it yet.
+
+
+## Future steps
+
+Making all the project as an independent module in order to work anywhere as a library.
+
+Correct an issue when writing into the file, where the id of a match is the same as another match in progress and one of them is not written in the file.

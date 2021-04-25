@@ -2,7 +2,7 @@ const file = './data.txt';
 const jsonFile = './matches.json';
 
 const fs = require('fs').promises;
-const fsWithoutPromises = require('fs');
+const fsSync = require('fs');
 
 const formatData = (regex, list) => {
     return list
@@ -41,6 +41,26 @@ const getData = async (filename = file) =>  {
     }
 }
 
+const getJSONFileData = async (filename = jsonFile) =>  {
+    try {
+        const resultString = await fs.readFile(filename, 'utf-8');
+        return resultString;
+    } catch(e) {
+        console.log(e)
+        return new Error(`An error occured during getting the data from ${filename}: ${e}`);
+    }
+}
+
+const getJSONFileDataSync = (filename = jsonFile) =>  {
+    try {
+        const resultString = fsSync.readFileSync(filename, 'utf-8');
+        return JSON.parse(resultString);
+    } catch(e) {
+        console.log(e)
+        return new Error(`An error occured during getting the data from ${filename}: ${e}`);
+    }
+}
+
 const writeInFile = (json, filename = file) => {
     try {
         const line = `${json.homeTeam} - ${json.awayTeam}: ${json.homeScore} - ${json.awayScore}\n`
@@ -50,14 +70,30 @@ const writeInFile = (json, filename = file) => {
     }
 }
 
-const writeInJSONFile = (json, filename = jsonFile) => {
+const writeInJSONFile = async (json, filename = jsonFile) => {
     try {
-        let data = fsWithoutPromises.readFileSync(filename);
+        let data = await fs.readFile(filename);
+
         let result = JSON.parse(data);
         let obj = result.filter(match => match.id !== json.id);
         obj.push(json);
 
-        fs.writeFile(filename, JSON.stringify(obj, null, 4))
+        await fs.writeFile(filename, JSON.stringify(obj, null, 4))
+    } catch(e) {
+        console.log(e)
+        return new Error("Error while writing into the file");
+    }
+}
+
+const writeInJSONFileSync = (json, filename = jsonFile) => {
+    try {
+        let data = getJSONFileDataSync();
+
+        let result = data;
+        let obj = result.filter(match => match.id !== json.id);        
+        obj.push({...json});
+
+        fsSync.writeFileSync(filename, JSON.stringify(obj, null, 4))
     } catch(e) {
         console.log(e)
         return new Error("Error while writing into the file");
@@ -67,5 +103,8 @@ const writeInJSONFile = (json, filename = jsonFile) => {
 module.exports = {
     getData,
     writeInFile,
-    writeInJSONFile
+    writeInJSONFile,
+    getJSONFileData,
+    getJSONFileDataSync,
+    writeInJSONFileSync
 }

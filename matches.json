@@ -2,23 +2,23 @@
     {
         "homeTeam": "C",
         "awayTeam": "D",
-        "homeScore": 0,
-        "awayScore": 0,
+        "homeScore": 5,
+        "awayScore": 3,
         "inProgress": false,
         "id": 1
     },
     {
         "homeTeam": "A",
         "awayTeam": "B",
-        "homeScore": 0,
-        "awayScore": 0,
+        "homeScore": 3,
+        "awayScore": 2,
         "inProgress": false,
         "id": 2
     },
     {
         "homeTeam": "E",
         "awayTeam": "F",
-        "homeScore": 0,
+        "homeScore": 8,
         "awayScore": 0,
         "inProgress": false,
         "id": 3
@@ -26,16 +26,16 @@
     {
         "homeTeam": "A",
         "awayTeam": "P",
-        "homeScore": 0,
-        "awayScore": 0,
+        "homeScore": 2,
+        "awayScore": 1,
         "inProgress": false,
         "id": 4
     },
     {
         "homeTeam": "A",
         "awayTeam": "B",
-        "homeScore": 0,
-        "awayScore": 0,
+        "homeScore": 1,
+        "awayScore": 4,
         "inProgress": false,
         "id": 5
     }
