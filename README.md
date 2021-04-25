@@ -41,6 +41,10 @@ You can run it on REPL like this:
     match.finishMatch()
     board.getSummaryGamesByTotalScore()
 
+Or if you prefer, you can run a demostration just with:
+
+    node index
+
 ## Tests
 
 To execute the tests we will have to do it with the command below:

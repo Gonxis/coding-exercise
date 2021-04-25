@@ -1,21 +1,36 @@
 const MATCH = require('./classes/Match');
 const BOARD = require('./classes/Board');
 
-//const getData = require('./getData');
+(function init(){
+    const board = new BOARD();
+    const match_1 = new MATCH("Argentina", "France");
+    const match_2 = new MATCH("Spain", "Japan");
+    
+    match_1.startMatch();
 
-//getData.getData(process.argv[2]);
+    console.log("Summary of matches in play: ");
+    console.table(board.getSummaryGamesInProgressByTotalScore());
 
-exports.startMatch = (homeTeam, awayTeam) => {
-    const match = new MATCH(homeTeam, awayTeam);
-    return match.startMatch();
-}
+    match_1.updateMatch(1, 0);
 
-exports.updateMatch = (homeScore, awayScore) => {
-    const match = this.startMatch();
-    return match.updateMatch(homeScore, awayScore);
-}
+    console.log("Summary of matches in play: ");
+    console.table(board.getSummaryGamesInProgressByTotalScore());
 
-exports.finishMatch = () => {
-    const match = this.startMatch();
-    return match.finishMatch();
-}
+    match_1.updateMatch(2, 0);
+
+    console.log("Summary of matches in play: ");
+    console.table(board.getSummaryGamesInProgressByTotalScore());
+
+    match_2.startMatch();
+
+    console.log("Summary of matches in play: ");
+    console.table(board.getSummaryGamesInProgressByTotalScore());
+
+    match_2.finishMatch();
+
+    match_1.finishMatch();
+
+    
+    console.log("Summary of all matches: ");
+    console.table(board.getSummaryGamesByTotalScore());
+})()
